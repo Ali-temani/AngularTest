@@ -1,0 +1,67 @@
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+<div *ngFor="let u of list" 
+ 
+  (deferLoad)="u.show = true" >
+
+ <table id="customers">
+   <ng-container *ngIf="u.show">
+
+     <tr>
+             <th>Id</th>
+             <th>author</th>
+             <th>Text</th>
+             <th>Action</th>
+             <th>Image</th>
+      </tr>   
+      <tr>  
+
+              <td>{{u.id}}</td> 
+              <td>{{u.author}}</td>
+  
+              <td>{{u.text}}</td>
+              <td>  <button type="button" (click)="delete(u.id, u)">Remove</button></td>
+              <td>
+                <div class="image-container">
+    
+                    <img name='beautiful-image' src={{u.url}} width="200" height="200"  id="remove">
+  
+                 </div>
+               </td>
+   
+          </tr>
+
+
+
+ 
+
+</ng-container>
+
+
+
+</table>
+
+   </div>
